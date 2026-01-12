@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Data
+data/processed/*
+outputs/*
+models/*.pkl
+
+# Notebooks
+.ipynb_checkpoints/
