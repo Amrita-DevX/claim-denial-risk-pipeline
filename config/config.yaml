@@ -1,0 +1,43 @@
+project:
+  name: healthcare-claim-denial-ml
+  random_state: 42
+
+paths:
+  raw_data: data/raw
+  processed_data: data/processed
+  model_dir: models
+  output_dir: outputs
+
+data:
+  target_column: is_denied
+  claim_id_column: claim_id
+
+model:
+  type: logistic_regression
+  test_size: 0.2
+  threshold: 0.5
+
+batch:
+  score_output: scored_claims.csv
+  run_frequency: daily
+
+features:
+  high_risk_insurance:
+    - Self-Pay
+    - Unknown
+
+  final_features:
+    - billed_amount
+    - length_of_stay
+    - long_stay_flag
+    - age
+    - age_bucket
+    - readmitted_flag
+    - high_risk_insurance_flag
+    - has_diagnosis
+    - years_experience
+    - low_experience_provider
+    - insurance_type
+    - visit_type
+    - department_x
+    - admission_type

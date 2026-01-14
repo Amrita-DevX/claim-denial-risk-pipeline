@@ -1,12 +1,42 @@
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .env
+.venv
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
 
 # Data
+data/raw/*
 data/processed/*
 outputs/*
 models/*.pkl
 
-# Notebooks
-.ipynb_checkpoints/
+# OS
+.DS_Store
+Thumbs.db
+
+# MLflow
+mlflow.db
+mlruns/
+.mlflow/
+
+# Python cache and pycache
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+.trash/
