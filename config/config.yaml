@@ -26,6 +26,24 @@ features:
     - Self-Pay
     - Unknown
 
+  numeric_features:
+    - billed_amount
+    - length_of_stay
+    - long_stay_flag
+    - age
+    - readmitted_flag
+    - high_risk_insurance_flag
+    - has_diagnosis
+    - years_experience
+    - low_experience_provider
+
+  categorical_features:
+    - age_bucket
+    - insurance_type
+    - visit_type
+    - department_x
+    - admission_type
+
   final_features:
     - billed_amount
     - length_of_stay
