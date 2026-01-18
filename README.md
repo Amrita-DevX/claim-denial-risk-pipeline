@@ -120,6 +120,72 @@ Swagger UI:
 - New claims placed in `data/incoming/`
 - Scheduled execution via Windows Task Scheduler
 - Outputs scored claims with denial probability
+#### 🔹 Batch Scoring (Scheduled Inference)
+
+This project supports **batch-based claim denial risk scoring**, simulating how healthcare analytics teams run daily or hourly scoring jobs in production.
+
+
+
+#### 📥 Input Data
+
+- New claim records are provided as CSV files
+- Files must be placed in the following directory:
+
+data/incoming/
+
+markdown
+Copy code
+
+- Each CSV represents a batch of new claims that have not yet been adjudicated
+- The schema matches the raw claim fields used during training (no pre-engineered features required)
+
+
+
+#### ⚙️ Batch Scoring Process
+
+The batch scoring workflow is implemented in `src/batch_score.py` and follows these steps:
+
+1. Load the trained pipeline (`claim_denial_model.pkl`)
+2. Read all new CSV files from `data/incoming/`
+3. Apply the **same feature engineering and preprocessing pipeline** used during training
+4. Generate:
+   - Denial prediction (0 / 1)
+   - Denial risk probability
+5. Write scored outputs to:
+
+data/output/scored_claims_<timestamp>.csv
+
+
+This design guarantees **training–serving consistency** and avoids feature drift.
+
+
+#### ⏱ Scheduled Execution (Windows Task Scheduler)
+
+To simulate production scheduling, the batch job is executed automatically using **Windows Task Scheduler**.
+
+##### Execution Script
+
+A batch file is used to trigger scoring:
+
+run_batch_score.bat
+
+Example:
+```bat
+@echo off
+cd C:\path\to\claim-denial-risk-pipeline
+call venv\Scripts\activate
+python src\batch_score.py
+```
+🗓 Scheduler Configuration
+Trigger: Daily (or hourly, depending on requirement)
+
+Action: Run run_batch_score.bat
+
+Purpose:
+
+- Automatically score new claims
+- Remove manual execution
+- Ensure timely risk detection
 
 ---
 
