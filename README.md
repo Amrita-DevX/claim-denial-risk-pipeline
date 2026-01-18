@@ -138,17 +138,33 @@ In real enterprise environments, model artifacts are typically loaded from objec
 
 claim-denial-risk-pipeline/
 │
-├── api/ # FastAPI application
-├── src/ # Training, feature pipeline, batch scoring
-├── models/ # Trained ML model
+├── api/
+│   └── app.py                      # FastAPI application
+│
+├── config/
+│   └── config.yaml                 # Configuration file
+│
 ├── data/
-│ ├── incoming/ # New claims for batch inference
-│ └── output/ # Scored outputs
-├── config/ # YAML configuration
-├── notebooks/ # EDA and experimentation
-├── Dockerfile
-├── requirements.txt
-└── README.md
+│   └── incoming/
+│       └── new_claims_sample.csv   # Sample incoming claims for batch scoring
+│
+├── models/
+│   └── claim_denial_model.pkl      # Trained ML model
+│
+├── notebooks/
+│   ├── 01_data_exploration.ipynb
+│   ├── 02_feature_engineering.ipynb
+│   └── 03_model_training.ipynb
+│
+├── src/                            # Source code
+│   └── (feature_pipeline.py, data_loader.py, utils.py, etc.)
+│
+├── .gitignore                      # Git ignore rules
+├── Dockerfile                      # Docker configuration
+├── README.md                       # Project documentation
+├── requirements.txt                # Python dependencies
+├── run_batch_score.bat             # Batch scoring script (Windows)
+└── test_mlflow.py                  # MLflow testing script
 
 
 ---
