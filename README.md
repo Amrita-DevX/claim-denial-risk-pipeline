@@ -136,35 +136,51 @@ In real enterprise environments, model artifacts are typically loaded from objec
 
 ## 📁 Project Structure
 
+
+```
 claim-denial-risk-pipeline/
 │
-├── api/
-│   └── app.py                      # FastAPI application
+├── api/                          # FastAPI application
+│   ├── app.py                    # Main FastAPI app with prediction endpoints
+│   ├── schemas.py                # Pydantic models for request/response
+│   └── utils.py                  # Helper functions for API
 │
-├── config/
-│   └── config.yaml                 # Configuration file
+├── src/                          # Training, feature pipeline, batch scoring
+│   ├── train_model.py            # Model training script
+│   ├── feature_pipeline.py       # Feature engineering pipeline
+│   ├── batch_score.py            # Batch inference for multiple claims
+│   ├── data_loader.py            # Data loading utilities
+│   ├── utils.py                  # Helper functions
+│   └── __init__.py               # Package initialization
+│
+├── models/                       # Trained ML model
+│   ├── claim_denial_model.pkl    # Serialized trained model
+│   └── scaler.pkl                # Feature scaler (if applicable)
 │
 ├── data/
-│   └── incoming/
-│       └── new_claims_sample.csv   # Sample incoming claims for batch scoring
+│   ├── raw/                      # Original raw data
+│   │   └── claims_data.csv
+│   ├── processed/                # Cleaned and processed data
+│   │   └── processed_claims.csv
+│   ├── incoming/                 # New claims for batch inference
+│   │   └── new_claims.csv
+│   └── output/                   # Scored outputs
+│       └── scored_claims.csv
 │
-├── models/
-│   └── claim_denial_model.pkl      # Trained ML model
+├── config/                       # YAML configuration
+│   └── config.yaml               # Feature names, model parameters
 │
-├── notebooks/
+├── notebooks/                    # EDA and experimentation
 │   ├── 01_data_exploration.ipynb
 │   ├── 02_feature_engineering.ipynb
 │   └── 03_model_training.ipynb
 │
-├── src/                            # Source code
-│   └── (feature_pipeline.py, data_loader.py, utils.py, etc.)
-│
-├── .gitignore                      # Git ignore rules
-├── Dockerfile                      # Docker configuration
-├── README.md                       # Project documentation
-├── requirements.txt                # Python dependencies
-├── run_batch_score.bat             # Batch scoring script (Windows)
-└── test_mlflow.py                  # MLflow testing script
+├── Dockerfile                    # Docker configuration
+├── requirements.txt              # Python dependencies
+├── .gitignore                    # Git ignore file
+├── README.md                     # Project documentation
+└── mlflow.db                     # MLflow experiment tracking (auto-generated)
+```
 
 
 ---
