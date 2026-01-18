@@ -7,6 +7,8 @@ paths:
   processed_data: data/processed
   model_dir: models
   output_dir: outputs
+  new_data_dir: data/incoming
+
 
 data:
   target_column: is_denied

@@ -1,0 +1,11 @@
+billed_amount,length_of_stay,age,readmitted_flag,insurance_type,visit_type,department_x,admission_type,diagnosis_code,years_experience
+3200.50,7,67,No,Medicaid,Inpatients,Oncology,Emergency,C50.919,3
+850.75,0,45,No,BCBS,Outpatient,Dermatology,Elective,L40.9,12
+12500.00,14,72,Yes,Medicare,Inpatients,Cardiology,Emergency,I21.9,6
+420.20,0,29,No,Self-Pay,Outpatient,Emergency Department,Emergency,R10.9,2
+2780.90,4,53,No,BCBS,Outpatient,Gastroenterology,Elective,K21.9,18
+9100.00,10,61,Yes,Medicaid,Inpatients,Orthopedics,Emergency,M16.11,4
+560.00,0,34,No,Unknown,Outpatient,Psychiatry / Behavioral Health,Elective,F41.1,9
+6800.45,6,48,No,BCBS,Inpatients,Neurology,Emergency,G40.909,11
+1500.00,2,22,No,Medicaid,Outpatient,Pediatrics,Elective,J06.9,1
+10400.30,12,79,Yes,Medicare,Inpatients,Pulmonology,Emergency,J44.1,15
