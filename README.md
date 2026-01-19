@@ -1,7 +1,7 @@
 # 🏥 Claim Denial Risk Prediction Pipeline
 
 **Live API**  
-👉 https://claim-denial-risk-pipeline.onrender.com
+👉 https://claim-denial-risk-pipeline.onrender.com/docs
 
 ---
 
